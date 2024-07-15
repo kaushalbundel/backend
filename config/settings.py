@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     "todos.apps.TodosConfig",
     # Third party apps
     "rest_framework",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -130,3 +132,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.AllowAny"  # to disable all the default permissions
     ]
 }
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:3000",  # default react port
+    "http://localhost:8000",  # default django port
+)
